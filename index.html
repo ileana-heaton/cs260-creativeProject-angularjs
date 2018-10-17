@@ -16,19 +16,36 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
-    
     <!-- Needed for angularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    
+    <!-- Sources for script files -->
+    <script src="./scripts/script.js" type="text/javascript"></script>
 </head>
     
 <body>
     <div class="container">
         <div data-ng-app="myApp" data-ng-controller="myCtrl">
+            <h1>MadLibs Time!</h1>
+            
+            <form name='userForm' ng-submit='submitWords(userForm)'>
+                <div ng-repeat="blank in blanks track by $index">
+                    <div>
+                        {{blank}}: <input placeholder='' ng-model="userWords[$index]" required/>                    
+                    </div>
+                </div>
+                <button type='submit'>Submit</button>
+            </form>
+            
+            <h1>MadLibs Story:</h1>
+            <p>{{story}}</p>
+            
+            <button name="resetButton" ng-submit="resetPage()" style="visibility: hidden;">Reset</button>
             
         </div>
     </div>
-    <!-- Sources for script files -->
-    <script src="./scripts/script.js" type="text/javascript"></script>
+
 </body>
 </html>
